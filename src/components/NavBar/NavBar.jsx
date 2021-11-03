@@ -6,22 +6,22 @@ const NavBar = () => {
   return (
     <Navbar className="navbar">
       <div id="root-div">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li id="navButton" class="nav-item">
-                <button type="button" class="btn btn-outline-light btn-sm m-1">Inicio</button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li id="navButton" className="nav-item">
+                <button type="button" className="btn btn-outline-light btn-sm m-1">Inicio</button>
               </li>
-              <li id="navButton" class="nav-item">
-                <button type="button" class="btn btn-outline-light btn-sm m-1">Catalogo</button>
+              <li id="navButton" className="nav-item">
+                <button type="button" className="btn btn-outline-light btn-sm m-1">Catalogo</button>
               </li>
-              <li id="navButton" class="nav-item">
-                <button type="button" class="btn btn-outline-light btn-sm m-1">Login</button>
+              <li id="navButton" className="nav-item">
+                <button type="button" className="btn btn-outline-light btn-sm m-1">Login</button>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 <CartWidget/>
               </li>
             </ul>

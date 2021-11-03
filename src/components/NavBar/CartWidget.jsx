@@ -4,7 +4,7 @@ import shoppingcart from "./shoppingcartlogo.png";
 function CartWidget() {
   return (
     <div>
-      <a class="navbar-brand" href="#">
+      <a className="navbar-brand" href="#">
         <img src={shoppingcart} width="40" height="30" alt="cart"></img>
       </a>
     </div>

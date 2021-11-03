@@ -1,20 +1,20 @@
 import './App.css';
 import {ItemListContainer} from './components/ItemListContainer/ItemListContainer.jsx';
 import NavBar from './components/NavBar/NavBar';
-
 function App() {
   let titulo="Hola soy ItemListContainer.jsx";
+
   return (
-    <div className="App">
+    <div className="App bg-light">
       <header className="App-header">
         <div>
-          <h1>Upgrade Center</h1>
+          <h1 className="display-4 mx-4">Upgrade Center</h1>
         </div>
         <NavBar/>
       </header>
-      <body>
+      <div>
         <ItemListContainer titulo={titulo}/>
-      </body>
+      </div>
     </div>
   );
 }

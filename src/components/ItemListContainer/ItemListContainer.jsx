@@ -1,5 +1,7 @@
 import Item from "./Item";
 import {useState, useEffect} from "react";
+import ItemDetailContainer from "./ItemDetailContainer";
+
 
 const productos = [
   {id:1, name:"Gabinete Gamer", description:"Muy Lindo", stock:5},
@@ -12,7 +14,6 @@ const productos = [
   {id:8, name:"Gabinete Gamer", description:"Muy Lindo", stock:2},
   {id:9, name:"Gabinete Gamer", description:"Muy Lindo", stock:6}
 ]
-
 
 const getFetch = new Promise((resolve,reject)=>{
   
@@ -48,15 +49,15 @@ export const ItemListContainer = ({titulo}) => {
       <div>
         <h2 className="blockquote text-center">{titulo}</h2>
         <div className="d-flex flex-wrap justify-content-center">
-          {
-          loading ? <div className="spinner-border" role="status">
-                    </div> :          
+          {/* {loading ? <div className="spinner-border" role="status"></div> :          
           products.map(prod =>
           <div style={{ width: '15%' }} className="d-flex m-4" key={prod.id}>
             <Item stock={prod.stock} name={prod.name} description={prod.description} />            
           </div>
-            )}
+            )} */}
+        {loading ? <div className="spinner-border" role="status"></div> : <div>{<ItemDetailContainer/>}</div>}
         </div>
+
       </div>
     )
 }

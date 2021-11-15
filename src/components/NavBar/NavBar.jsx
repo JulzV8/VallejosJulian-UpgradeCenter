@@ -1,33 +1,44 @@
 import { Navbar } from "react-bootstrap"
 import CartWidget from "./CartWidget";
+import { Link,NavLink } from 'react-router-dom';
+
 import './NavBar.css';
 
 const NavBar = () => {
   return (
-    <Navbar className="navbar">
-      <div id="root-div">
-        <nav className="navbar navbar-expand-lg navbar-dark">
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+    <Navbar className="navbar justify-content-between">
+      <NavLink className="text-decoration-none text-light"exact to="/">
+        <h1 className="display-4 mx-4">
+          Upgrade Center
+        </h1>
+                </NavLink>
             <ul className="navbar-nav">
               <li id="navButton" className="nav-item">
-                <button type="button" className="btn btn-outline-light btn-sm m-1">Inicio</button>
+                <NavLink exact to="/" activeClassName="btn btn-warning btn-outline-dark btn-sm m-1 font-weight-bold"  type="button" className="btn btn-outline-light btn-sm m-1">
+                  Inicio
+                </NavLink>
               </li>
               <li id="navButton" className="nav-item">
-                <button type="button" className="btn btn-outline-light btn-sm m-1">Catalogo</button>
+                <NavLink to="/categoria/gabinete" activeClassName="btn btn-warning btn-outline-dark btn-sm m-1 font-weight-bold"  type="button" className="btn btn-outline-light btn-sm m-1">
+                  Gabinetes
+                </NavLink>
               </li>
               <li id="navButton" className="nav-item">
-                <button type="button" className="btn btn-outline-light btn-sm m-1">Login</button>
+                <NavLink to="/categoria/cpu" activeClassName="btn btn-warning btn-outline-dark btn-sm m-1 font-weight-bold"  type="button" className="btn btn-outline-light btn-sm m-1">
+                  CPU
+                </NavLink>
+              </li>
+              <li id="navButton" className="nav-item">
+                <NavLink to="/categoria/gpu" activeClassName="btn btn-warning btn-outline-dark btn-sm m-1 font-weight-bold"  type="button" className="btn btn-outline-light btn-sm m-1">
+                  GPU
+                </NavLink>
               </li>
               <li className="nav-item">
-                <CartWidget/>
+                <Link to="/cart">
+                    <CartWidget/>
+                </Link>
               </li>
             </ul>
-          </div>
-        </nav>
-      </div>
     </Navbar>
   )
 }

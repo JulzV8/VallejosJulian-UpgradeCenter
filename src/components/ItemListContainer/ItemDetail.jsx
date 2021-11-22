@@ -1,14 +1,17 @@
 import React, {useState } from "react";
+import { useCartContext } from "../../context/CartContext";
 import ItemCount from "./ItemCount";
 
 
 const ItemDetail = (props) => {
   const {stock,name,description,precio,image} = props;
   const [cantidad, setCantidad] = useState(0);
+  const {agregarCarrito} = useCartContext(useCartContext)
 
   const onAdd = (cant)=>{
     if(cant>0){
       setCantidad(cant)
+      agregarCarrito({...props, cantidad: cant})
       return true
     }
     return false

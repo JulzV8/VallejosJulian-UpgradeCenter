@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 
 
 const Item = (props) => {
-  const {stock,name,id,image} = props;
+  const {stock,name,id,image,precio} = props;
   return (
-      <div className="card mh-100">
+      <div className="card w-100 h-100 d-flex flex-column justify-content-center align-items-center">
         <Link to={`detail/${id}`}>
-          <img className="card-img-top img-fluid" src={image}alt="productImage" ></img>
+          <div style={{ width: '150px', height: '150px' }}>
+            <img className="img-fluid" src={image}alt="productImage" ></img>
+          </div>
         </Link>
         <div className="card-body">
           <h5 className="card-title text-center">{name}</h5>
-          {/* <p className="card-text text-muted text-center">{description}</p> */}
-          <p className="card-text text-center">Stock Disponible: {stock}</p>
+          <p className="text-center">Stock Disponible: {stock}</p>
+          <p className="text-center">Precio: ${precio}</p>
+
         </div>
       </div>
   )

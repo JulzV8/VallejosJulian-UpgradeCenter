@@ -6,7 +6,7 @@ import ItemCount from "./ItemCount";
 const ItemDetail = (props) => {
   const {stock,name,description,precio,image} = props;
   const [cantidad, setCantidad] = useState(0);
-  const {agregarCarrito} = useCartContext(useCartContext)
+  const {agregarCarrito} = useCartContext()
 
   const onAdd = (cant)=>{
     if(cant>0){

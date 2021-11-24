@@ -6,7 +6,7 @@ const Item = (props) => {
   const {stock,name,id,image,precio} = props;
   return (
       <div className="card w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-        <Link to={`detail/${id}`}>
+        <Link to={`/detail/${id}`}>
           <div style={{ width: '150px', height: '150px' }}>
             <img className="img-fluid" src={image}alt="productImage" ></img>
           </div>

@@ -2,7 +2,7 @@ import { useCartContext } from '../../context/CartContext'
 import CartDetail from './CartDetail'
 
 const CartContainer = () => {
-  const {cartList,vaciarCarrito} = useCartContext(useCartContext)
+  const {cartList,vaciarCarrito} = useCartContext()
   return (
     <div> {cartList.length ? 
     <div>

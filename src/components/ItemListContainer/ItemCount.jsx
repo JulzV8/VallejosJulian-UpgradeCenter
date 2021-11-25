@@ -45,7 +45,7 @@ const [itemCount, setItemCount] = useState(0);
           </div>:
             <div div className="d-flex justify-content-center">
               <Link exact to="/cart" className="btn btn-success">
-              Hecho! Ir al carrito.
+              Hecho! Terminar mi compra.
               </Link>
             </div>
         }

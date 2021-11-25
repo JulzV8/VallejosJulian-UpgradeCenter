@@ -15,7 +15,6 @@ const Item = (props) => {
           <h5 className="card-title text-center">{name}</h5>
           <p className="text-center">Stock Disponible: {stock}</p>
           <p className="text-center">Precio: ${precio}</p>
-
         </div>
       </div>
   )

@@ -39,7 +39,7 @@ const [itemCount, setItemCount] = useState(0);
             <div className="d-flex justify-content-center">
               <button className="btn btn-primary" onClick={()=>{
                 if(terminar(itemCount))
-                cambiarBoton()
+                cambiarBoton(0)
                 }}>Agregar al carrito</button>
             </div>
           </div>:

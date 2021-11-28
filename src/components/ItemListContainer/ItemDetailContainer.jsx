@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router";
+import { getFirestore } from "../service/getFirestore";
 
 const products = [
   {id:"1", name:"Gabinete Gamer", description:"Marca: Sentey Modelo: X10 Otras características Incluye fuente de alimentación: No Tipo de estructura: Mid tower Puertos: USB 3.0 Bahías: 3.5 in Potencia de la fuente de alimentación: 0.01 W Altura x Ancho x Largo: 340 mm x 170 mm x 340 mm Placas madre compatibles: M-ATX,ITX", categoria:"gabinete" , stock:5, precio:35000,image:"https://lezamapc.com.ar/16923-large_default/gabinete-gigabyte-aorus-ac300w-rgb.jpg"},
@@ -35,10 +36,11 @@ export const ItemDetailContainer = () => {
   const {id} = useParams()
 
   useEffect(() => {
-    getItem
-    .then(res=> setProductos(res.find(res => res.id === id)))
-    .catch( err => console.log("holiwis"))
-    .finally(()=> setLoading(false))   
+    const dbQuery = getFirestore();
+    dbQuery.collection("items").doc(id).get()
+    .then(resp => setProductos({id: {id}, ... resp.data() } ))
+    .catch(err => console.log(err))
+    .finally(()=> setLoading(false))
 
   },[id])
 
@@ -48,7 +50,7 @@ export const ItemDetailContainer = () => {
           {
           loading ? <div className="d-flex m-3"><div className="spinner-border" role="status"></div><h2 className="mx-3">Cargando...</h2></div> :
           <div style={{ width: '30%' }} className="d-flex m-4" key={productos.id}>
-            <ItemDetail id={productos.id} stock={productos.stock} name={productos.name} description={productos.description } precio={productos.precio} image={productos.image}/>            
+            <ItemDetail id={productos.id} stock={productos.stock} name={productos.name} description={productos.description } precio={productos.precio} image={productos.urlImage}/>            
           </div>
           }
         </div>

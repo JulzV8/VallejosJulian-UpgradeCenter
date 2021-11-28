@@ -1,6 +1,7 @@
 import Item from "./Item";
 import {useState, useEffect} from "react";
 import { useParams } from "react-router";
+import { getFirestore } from "../service/getFirestore";
 // import ItemDetailContainer from "./ItemDetailContainer";
 
 
@@ -33,26 +34,26 @@ const getFetch = new Promise((resolve,reject)=>{
 
 export const ItemListContainer = () => {
   const [products, setProducts] = useState([])
+  const [prod, setProd] = useState({})
   const [loading, setLoading] = useState(true)
 
   const {categoryID} = useParams()
 
   useEffect(() => {
-    if (categoryID) {
-      getFetch
-      .then(res =>
-        setProducts(res.filter(res => res.categoria === categoryID)))
-      .catch( err => console.log("holiwis"))
-      .finally(()=> setLoading(false))   
-    } else {
-      getFetch
-      .then(res =>
-        setProducts(res)
-      )
-      .catch( err => console.log("holiwis"))
-      .finally(()=> setLoading(false))      
-    }
+    const dbQuery = getFirestore()
 
+    if (categoryID) {
+      dbQuery.collection("items").where("categoria","==",categoryID).get()
+      .then(data => setProducts(    data.docs.map(pro => ( {id: pro.id, ...pro.data() } )) ))
+      .catch(err => console.log(err))
+      .finally(()=> setLoading(false))
+    }
+    else{
+      dbQuery.collection("items").get()
+      .then(data => setProducts(    data.docs.map(pro => ( {id: pro.id, ...pro.data() } )) ))
+      .catch(err => console.log(err))
+      .finally(()=> setLoading(false))
+    }
   },[categoryID])
 
     return (
@@ -61,7 +62,7 @@ export const ItemListContainer = () => {
           {loading ? <div className="d-flex m-3"><div className="spinner-border" role="status"></div><h2 className="mx-3">Cargando...</h2></div>  :          
           products.map(prod =>
           <div style={{ width: '200px', height: '300px' }} className="d-flex m-4" key={prod.id}>
-            <Item stock={prod.stock} name={prod.name} id={prod.id} precio={prod.precio} image={prod.image}/>            
+            <Item stock={prod.stock} name={prod.name} id={prod.id} precio={prod.precio} image={prod.urlImage}/>            
           </div>
             )}
         </div>

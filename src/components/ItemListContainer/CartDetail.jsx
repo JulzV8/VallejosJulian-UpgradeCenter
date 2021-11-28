@@ -11,7 +11,7 @@ const CartDetail = (props) => {
   }
 
   return (
-    <div style={{height: '150px','backgroundColor':background}}class="container-fluid d-flex">
+    <div style={{height: '150px','backgroundColor':background}}className="container-fluid d-flex">
       <div className="w-25 h-100 p-0 m-0 text-center">
       <img className="h-100" src={image}alt="productImage" ></img>
       </div>

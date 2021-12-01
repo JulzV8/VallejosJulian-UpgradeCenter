@@ -1,21 +1,18 @@
-import React, {useState } from "react";
+import React from "react";
 import { useCartContext } from "../../context/CartContext";
 import ItemCount from "./ItemCount";
 
 
 const ItemDetail = (props) => {
   const {stock,name,description,precio,image} = props;
-  // eslint-disable-next-line
-  const [cantidad, setCantidad] = useState(0);
   const {agregarCarrito} = useCartContext()
 
   const onAdd = (cant)=>{
     if(cant>0){
-      setCantidad(cant)
       agregarCarrito({...props, cantidad: cant})
-      return true
+      return 1
     }
-    return false
+    return 0
   }
 
   return (

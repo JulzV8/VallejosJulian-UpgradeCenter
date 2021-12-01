@@ -7,13 +7,9 @@ export const useCartContext = () =>{
 
 const CartContextProvider = ({children}) => {
   const [cartList, setCartList] = useState([])
-  const [total, setTotal] = useState(0)
-  const [totalDinero, setTotalDinero] = useState(0)
-
   const agregarCarrito = (item)=>{
-      setTotal(total+item.cantidad)
-      setTotalDinero(totalDinero + (item.precio * item.cantidad))
-      if (cartList.find(element => element.id===item.id)) {
+    let encontrado = cartList.find(element => element.id===item.id);
+      if (encontrado){
         cartList[cartList.findIndex(element => element.id===item.id)].cantidad += item.cantidad;
       }else{
         setCartList([...cartList, item])
@@ -21,16 +17,18 @@ const CartContextProvider = ({children}) => {
   }
   
   const eliminarPorId = (id) => {
-    let element = cartList.find((a)=>{if(a.id === id){return true}else{return false}})
-    setTotal(total - element.cantidad)
-    setTotalDinero(totalDinero - (element.precio * element.cantidad))
     let resultado = cartList.filter((a)=>{if(a.id === id){return false}else{return true}})
     setCartList(resultado);
 
   }
-  const vaciarCarrito = ()=>{setCartList([]);setTotal(0);setTotalDinero(0)}
+  const vaciarCarrito = ()=>{setCartList([])}
+
+const totalDinero = ()=>{
+  return cartList.reduce((acum,valor)=>(acum + (valor.cantidad * valor.precio)),0)
+}
+
   return (
-    <CartContext.Provider value={{cartList,agregarCarrito,eliminarPorId,vaciarCarrito,total,totalDinero}}>
+    <CartContext.Provider value={{cartList,agregarCarrito,eliminarPorId,vaciarCarrito,totalDinero}}>
       {children}
     </CartContext.Provider>
   )

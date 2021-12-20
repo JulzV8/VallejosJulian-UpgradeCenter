@@ -53,8 +53,6 @@ const CartContainer = () => {
   const generarOrden = ()=>{
     if (nombre !== "" && apellido !== "" && numero !== "") {
       if ( email !== "" && email === emailSecundario) {
-        
-        console.log("valido");
         const comprador = {
           nombre:nombre,
           apellido:apellido,

@@ -8,7 +8,7 @@ Upgrade center es un e-commerce de partes de computadora. Ahora mismo cuenta con
 - Cpus
 - Gpus
 
-[ACCEDER A DEMO](https://frosty-beaver-1417d8.netlify.app/)
+[ACCEDER A DEMO](https://dazzling-jang-a300b8.netlify.app/)
 
 ## Librerias
 

@@ -8,11 +8,15 @@ const ItemDetail = (props) => {
   const {agregarCarrito} = useCartContext()
 
   const onAdd = (cant)=>{
+    let resultado;
     if(cant>0){
-      agregarCarrito({...props, cantidad: cant})
-      return 1
+      resultado = agregarCarrito({...props, cantidad: cant})
+      return resultado;
     }
-    return 0
+    else
+    {
+      return 0
+    }
   }
 
   return (
@@ -22,7 +26,8 @@ const ItemDetail = (props) => {
           <h5 className="card-title text-center">{name}</h5>
           <p className="card-text text-muted text-center">{description}</p>
           <p className="card-text text-center">Precio: ${precio}</p>
-          <p className="card-text text-center">Stock Disponible: {stock}</p>
+          {(stock === 0) ? <p className="card-text text-center">Sin stock disponible.</p> :
+          <p className="card-text text-center">Stock Disponible: {stock}</p>}
           <div>
             <ItemCount stock={stock} terminar={onAdd}/>
           </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCartContext } from "../../context/CartContext";
+import { Link } from 'react-router-dom';
 
 const CartDetail = (props) => {
   const {name,precio,image,cantidad,index,id} = props;
@@ -13,7 +14,9 @@ const CartDetail = (props) => {
   return (
     <div style={{height: '150px','backgroundColor':background}}className="container-fluid d-flex">
       <div className="w-25 h-100 p-0 m-0 text-center">
-      <img className="h-100" src={image}alt="productImage" ></img>
+        <Link className="text-decoration-none" to={`/detail/${id}`}>
+          <img className="h-100" src={image}alt="productImage" ></img>
+        </Link>
       </div>
       <div className="w-25 h-100 d-flex border-start border-dark justify-content-center align-items-center">
         <p >{name}</p>

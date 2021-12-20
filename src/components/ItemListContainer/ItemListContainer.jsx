@@ -11,20 +11,12 @@ export const ItemListContainer = () => {
   const {categoryID} = useParams()
 
   useEffect(() => {
-    const dbQuery = getFirestore()
-
-    if (categoryID) {
-      dbQuery.collection("items").where("categoria","==",categoryID).get()
-      .then(data => setProducts(    data.docs.map(pro => ( {id: pro.id, ...pro.data() } )) ))
-      .catch(err => console.log(err))
-      .finally(()=> setLoading(false))
-    }
-    else{
-      dbQuery.collection("items").get()
-      .then(data => setProducts(    data.docs.map(pro => ( {id: pro.id, ...pro.data() } )) ))
-      .catch(err => console.log(err))
-      .finally(()=> setLoading(false))
-    }
+    const db = getFirestore()
+    const dbQuery = categoryID ? db.collection("items").where("categoria","==",categoryID) : db.collection("items")
+    dbQuery.get()
+    .then(data => setProducts(    data.docs.map(pro => ( {id: pro.id, ...pro.data() } )) ))
+    .catch(err => console.log(err))
+    .finally(()=> setLoading(false))
   },[categoryID])
 
     return (
